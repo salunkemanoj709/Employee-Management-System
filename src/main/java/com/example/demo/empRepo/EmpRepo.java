@@ -11,7 +11,7 @@ import com.example.demo.entity.Employee;
 
 @Repository
 public interface EmpRepo extends JpaRepository<Employee, Integer>{
-  
+  //okkkk
   
     public Employee findById(int id);
 

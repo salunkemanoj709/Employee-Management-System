@@ -1,6 +1,8 @@
 package com.example.demo.serviceImp;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +27,11 @@ public class ServiceImp implements ServiceInt{
 	}
 
 	@Override
-	public String delete() {
+	public String delete(int id) {
 	 
-		return null;
+		Employee e=empRepo.findById(id);
+		empRepo.delete(e);
+		return "deleted successfully";
 	}
 //
 	@Override
@@ -38,9 +42,39 @@ public class ServiceImp implements ServiceInt{
 	}
 
 	@Override
-	public String update() {
+	public Employee update(Employee newE,int id) {
 		 
-		return null;
+		Employee old = empRepo.findById(id);
+		old.setName(newE.getName());
+		old.setAddress(newE.getAddress());
+		old.setAge(newE.getAge());
+		old.setDepartment(newE.getDepartment());
+		old.setDesignation(newE.getDesignation());
+		old.setEmail(newE.getEmail());
+		old.setGender(newE.getGender());
+		old.setPhone(newE.getPhone());
+		old.setSalary(newE.getSalary());
+		
+		empRepo.save(old);
+		return old;
 	}
 
+	@Override
+	public List<Employee> getAll() {
+		
+		return empRepo.findAll();
+	}
+
+	@Override
+	public List<Employee> findByName(String name) {
+		System.out.println(empRepo.findByName(name));
+		return empRepo.findByName(name);
+	}
+
+	@Override
+	public List<Employee> findByGender(String gender) {
+		
+		return empRepo.findByGender(gender);
+	}
+	
 }

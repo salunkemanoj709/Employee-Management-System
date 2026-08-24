@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
-/////allllllllllllllll
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
